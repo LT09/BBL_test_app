@@ -7,11 +7,10 @@ import {
   SafeAreaView,
   FlatList,
 } from "react-native";
-import Header from "@/components/Header";
-import Button from "@/components/Button";
+import Header from "@/components/BBL_Test/Header";
 import { useCallback, useState } from "react";
-import TodoListItem from "@/components/TodoListItem";
-import AddTodoInput from "@/components/AddTodoInput";
+import TodoListItem from "@/components/BBL_Test/TodoListItem";
+import AddTodoInput from "@/components/BBL_Test/AddTodoInput";
 
 type Todo = {
   id: string;

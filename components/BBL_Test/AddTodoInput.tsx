@@ -1,7 +1,7 @@
 // AddTodoInput.tsx
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-import Button from "@/components/Button";
+import Button from "@/components/BBL_Test/Button";
 
 type AddTodoInputProps = {
   newTodo: string;
