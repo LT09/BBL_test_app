@@ -1,28 +1,30 @@
-// AddTodoInput.tsx
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-import Button from "@/components/BBL_Test/Button";
+import Button from "./Button";
 
 type AddTodoInputProps = {
-  newTodo: string;
-  setNewTodo: React.Dispatch<React.SetStateAction<string>>;
-  handleAddTodo: () => void;
+  onAddTodo: (title: string) => void;
 };
 
-const AddTodoInput: React.FC<AddTodoInputProps> = ({
-  newTodo,
-  setNewTodo,
-  handleAddTodo,
-}) => {
+const AddTodoInput: React.FC<AddTodoInputProps> = ({ onAddTodo }) => {
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleAdd = useCallback(() => {
+    if (inputValue.trim() !== "") {
+      onAddTodo(inputValue);
+      setInputValue("");
+    }
+  }, [inputValue, onAddTodo]);
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.input}
         placeholder="Add new to-do..."
-        value={newTodo}
-        onChangeText={setNewTodo}
+        value={inputValue}
+        onChangeText={setInputValue}
       />
-      <Button title="Add" onPress={handleAddTodo} />
+      <Button title="Add" onPress={handleAdd} />
     </View>
   );
 };
@@ -30,18 +32,21 @@ const AddTodoInput: React.FC<AddTodoInputProps> = ({
 const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
-    marginBottom: 20,
     alignItems: "center",
+    padding: 10,
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
+    borderColor: "#ddd",
   },
   input: {
     flex: 1,
-    backgroundColor: "#fff",
+    height: 40,
+    borderColor: "#ddd",
     borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    marginRight: 10,
+    paddingHorizontal: 10,
     borderRadius: 4,
+    marginRight: 10,
   },
 });
 
-export default AddTodoInput;
+export default React.memo(AddTodoInput);

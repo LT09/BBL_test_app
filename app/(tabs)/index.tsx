@@ -25,18 +25,12 @@ export default function HomeScreen() {
     { id: "4", title: "Todo 4" },
   ]);
 
-  const [newTodo, setNewTodo] = useState<string>("");
-
-  const handleAddTodo = useCallback(() => {
-    if (newTodo.trim() !== "") {
-      const newTodoItem: Todo = {
-        id: Date.now().toString(),
-        title: newTodo,
-      };
-      setTodos((prevTodos) => [...prevTodos, newTodoItem]);
-      setNewTodo("");
-    }
-  }, [newTodo]);
+  const handleAddTodo = useCallback((title: string) => {
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: Date.now().toString(), title },
+    ]);
+  }, []);
 
   const handleDeleteTodo = useCallback((id: string) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
@@ -57,11 +51,7 @@ export default function HomeScreen() {
     <SafeAreaView style={{ flex: 1 }}>
       <Header />
       <View style={styles.pageContainer}>
-        <AddTodoInput
-          newTodo={newTodo}
-          setNewTodo={setNewTodo}
-          handleAddTodo={handleAddTodo}
-        />
+        <AddTodoInput onAddTodo={handleAddTodo} />
 
         <FlatList
           keyExtractor={(item) => item.id}
