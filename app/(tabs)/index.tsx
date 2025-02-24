@@ -36,7 +36,7 @@ export default function HomeScreen() {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   }, []);
 
-  const renderItem = ({ item }: { item: { id: string; title: string } }) => {
+  const renderItem = ({ item }: { item: Todo }) => {
     return (
       <TodoListItem
         id={item.id}

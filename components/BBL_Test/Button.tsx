@@ -9,7 +9,7 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ title, onPress, isDelete }) => {
   return (
     <Pressable
-      style={isDelete ? styles.deleteuttonContainer : styles.buttonContainer}
+      style={isDelete ? styles.deleteButtonContainer : styles.buttonContainer}
       onPress={onPress}
     >
       <Text style={styles.buttonText}>{title}</Text>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 4,
   },
-  deleteuttonContainer: {
+  deleteButtonContainer: {
     backgroundColor: "#ff3333",
     alignItems: "center",
     justifyContent: "center",

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   todoText: {
     fontSize: 16,
-    fontWeight: "medium",
+    fontWeight: "500",
     color: "#000",
   },
 });
